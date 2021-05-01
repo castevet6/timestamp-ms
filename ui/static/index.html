@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Timestamp Microservice</title>
+        <link rel='stylesheet' href='/css/main.css'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'>
+    </head>
+    <body>
+        <header>
+            <h1>Timestamp Microservice</h1>
+            <p>Copyright (C) 2020 castevet6</p>
+        </header>
+        <h2>Usage</h2>
+        <p>Make HTTP GET request to /api/timestamp to get current time as UTC time string and UNIX epoch time value in JSON</p>
+        <p>Make HTTP GET request with route param:</p>
+        <ul>
+            <li>Unix/Epoch time value in 10-digit (seconds) format, e.g. /api/timestamp/1500000000</li>
+            <li>Date string: "2020-01-01", "2020-Jan-01", RFC 3339</li>
+        </ul>
+    </body>
+</html>

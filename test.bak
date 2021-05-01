@@ -1,0 +1,52 @@
+package main
+
+import (
+    "encoding/json"
+	"log"
+	"os"
+
+	"github.com/castevet6/timestamp-ms/pkg/timestamp"
+)
+
+/* Dependencies */
+type application struct {
+	infoLog   *log.Logger
+	timestamp *timestamp.Timestamp
+}
+
+func main() {
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	ts := &timestamp.Timestamp{}
+
+	app := &application{
+		infoLog:   infoLog,
+		timestamp: ts,
+	}
+
+	s, u := app.timestamp.GetTimeNow()
+
+	type JsonTimestamp struct {
+		Unix int64  `json:"unix"`
+		Utc  string `json:"utc"`
+	}
+
+	js := JsonTimestamp{
+		Unix: u,
+		Utc:  s,
+	}
+
+	b, _ := json.Marshal(js)
+	os.Stdout.Write(b)
+
+	date_string1 := "2020-10-31"
+	s2, u2, _ := app.timestamp.GetTimeFromDateString(date_string1)
+
+	js2 := JsonTimestamp{
+		Unix: u2,
+		Utc:  s2,
+	}
+
+	b2, _ := json.Marshal(js2)
+	os.Stdout.Write(b2)
+
+}
